@@ -52,9 +52,6 @@ export default new VueRouter({//配置路由
     {
       path: '/profile',
       component: Profile,
-      meta: {
-        showFooter: true
-      }
     },
     {
       path: '/login',

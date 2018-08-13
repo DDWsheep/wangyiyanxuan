@@ -7,6 +7,7 @@
 
 
 <script>
+
   import FooterGuide from './components/FooterGuide/FooterGuide.vue'
   export default {
     components: {
@@ -17,7 +18,8 @@
 
 <style lang="stylus" rel="stylesheet/stylus">
   #app
-    width 100%
-    height 100%
+    width 100vw
+    height 100vh
     background #f4f4f4
+    overflow hidden
 </style>
