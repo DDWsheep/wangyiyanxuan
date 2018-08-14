@@ -168,8 +168,8 @@
     },
     mounted () {
       //轮播
-      this.$store.dispatch('getBanner', () => {
 
+      this.$store.dispatch('getBanner', () => {
         this.$nextTick(() => {
           new BScroll('.goodGrid', {
             scrollX: true,

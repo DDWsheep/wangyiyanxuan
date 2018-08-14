@@ -7,8 +7,8 @@ import Mock from 'mockjs'
 import dataNav from './data_nav.json'
 
 import homeData from './home_data.json'
-import shiwuData from './shiwu_data.json'
 
+import shiwuData from './datatopic.json'
 
 
 //返回banner 轮播图的接口
@@ -18,10 +18,10 @@ Mock.mock('/banner', {code: 0, data: homeData.focusList})
 Mock.mock('/home', {code: 0, data: homeData})
 
 //返回分类页的接口
-Mock.mock('/nav', {code: 0, data: dataNav})
+Mock.mock('/nav', {code: 0, data: dataNav.categoryL1List})
 
 //返回识物接口
-Mock.mock('/nav', {code: 0, data: shiwuData})
+Mock.mock('/shiwu', {code: 0, data: shiwuData})
 
 
 

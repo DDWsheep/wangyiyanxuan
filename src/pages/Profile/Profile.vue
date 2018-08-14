@@ -1,12 +1,15 @@
 <template>
 <div>
-  Profile个人中心
+  <Header/>
 </div>
 </template>
 
 <script>
+  import Header from '../../components/Header/Header'
   export default {
-    name: ""
+    components: {
+      Header
+    }
   }
 </script>
 

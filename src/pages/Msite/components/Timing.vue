@@ -5,11 +5,11 @@
         <div class="timing-left">
           <div class="title">严选限时购</div>
           <div class="countdown">
-            <span class="hours time">00</span>
+            <input class="hours time"/>{{timerArr[0]}}
             <span class="colon">:</span>
-            <span class="mins time">00</span>
+            <span class="mins time">{{timerArr[1]}}</span>
             <span class="colon">:</span>
-            <span class="secs time">00</span>
+            <span class="secs time">{{timerArr[2]}}</span>
           </div>
           <div class="next-title">下一场14:00开始</div>
         </div>
@@ -29,7 +29,43 @@
 
 <script>
   export default {
-    name: ""
+    data () {
+      return {
+        timerArr: []
+      }
+    },
+    mounted () {
+      this.$nextTick(() => {
+        this._getTime()
+      })
+    },
+    methods: {
+      _getTime () {
+        //获取当前时间
+        let arr = []
+        let data = new Date();
+        let now = data.getTime();
+        //设置截止时间
+        let endDate = new Date("2018-08-14 08:00:00");
+        let end = endDate.getTime();
+        //时间差
+        let leftTime = end-now;
+        //定义变量 d,h,m,s保存倒计时的时间
+        let h,m,s;
+        if (leftTime>=0) {
+          //d = Math.floor(leftTime/1000/60/60/24);
+          h = Math.floor(leftTime/1000/60/60%24);
+          m = Math.floor(leftTime/1000/60%60);
+          s = Math.floor(leftTime/1000%60);
+          arr.push(h, m, s)
+        } else{
+          end += 8*3600
+        }
+        this.timerArr = arr
+        setInterval(this._getTime ,500);
+
+      }
+    }
   }
 </script>
 

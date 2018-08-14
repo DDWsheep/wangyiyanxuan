@@ -4,7 +4,7 @@
     <div class="msite-header">
       <a href="javascript:;" class="logo"></a>
       <div class="msite-search">
-        <i class="iconfont icon-sousuo1 icon"></i>
+        <i class="iconfont icon-sousuo2 icon"></i>
         <span class="placeholder">搜索商品, 共11784款好物</span>
       </div>
     </div>
@@ -100,6 +100,9 @@
         border-radius 0.1rem
         color #666
         .icon
+          display inline-block
+          width 0.32rem
+          height 0.32rem
           font-size 0.32rem
           margin-right 0.1rem
 
