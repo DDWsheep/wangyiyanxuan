@@ -11,7 +11,7 @@ import Explore from '../pages/Explore/Explore'
 import Category from '../pages/Category/Category'
 import ShopCart from '../pages/ShopCart/ShopCart'
 import Profile from '../pages/Profile/Profile'
-import Login from '../pages/Login/Login'
+
 
 Vue.use(VueRouter);
 
@@ -53,10 +53,7 @@ export default new VueRouter({//配置路由
       path: '/profile',
       component: Profile,
     },
-    {
-      path: '/login',
-      component: Login
-    },
+   
     {
       path: '/',
       redirect: '/interpage'

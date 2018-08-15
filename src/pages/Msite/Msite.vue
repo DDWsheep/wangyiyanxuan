@@ -1,32 +1,41 @@
 <template>
-<div>
-  <div class="nva-wrap">
-    <div class="msite-header">
-      <a href="javascript:;" class="logo"></a>
-      <div class="msite-search">
-        <i class="iconfont icon-sousuo2 icon"></i>
-        <span class="placeholder">搜索商品, 共11784款好物</span>
-      </div>
-    </div>
+  <div>
+    <MaskList/>
+    <div>
 
-    <div class="msite-nav-wrap" ref="navScroll">
-      <div class="msite-nav">
-        <div class="nav-tab" v-for="(list, index) in navList" :key="index" @click="switchTab(index)">
-          <span class="nav-text" :class="{active: current===index}">{{list}}</span>
+      <div class="nva-wrap">
+        <div class="msite-header">
+          <a href="javascript:;" class="logo"></a>
+          <div class="msite-search">
+            <i class="iconfont icon-sousuo2 icon"></i>
+            <span class="placeholder">搜索商品, 共11784款好物</span>
+          </div>
+        </div>
+
+        <div class="msite-nav-wrap" ref="navScroll">
+          <div class="msite-nav">
+            <div class="nav-tab" v-for="(list, index) in navList" :key="index" @click="switchTab(index)">
+              <span class="nav-text" :class="{active: current===index}">{{list}}</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <goods/>
+
+
+
     </div>
   </div>
 
-  <goods/>
 
-</div>
 </template>
 
 <script>
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   import Goods from './components/Goods'
+  import MaskList from './components/MaskList'
   export default {
     data () {
       return {
@@ -46,25 +55,25 @@
         click: true
       })
 
-
-
-
     },
 
     methods: {
       switchTab (index) {
         this.current = index
-      }
+      },
+
     },
 
     components: {
-      Goods
+      Goods,
+      MaskList
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
   @import "../../common/stylus/mixins.styl"
+
   .nva-wrap
     background-color white
     margin-top 0
@@ -143,6 +152,7 @@
                 width: 100%;
                 height: 0.04rem
                 background-color: $red;
+
 
 
 

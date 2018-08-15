@@ -5,21 +5,25 @@
         <div class="inner">更多精彩</div>
       </div>
       <div class="content">
-        <div class="list" v-for="item in findMore" :key="item.topicId">
+        <div class="list" v-for="(item, index) in findMore" :key="index">
+          <div class="listImg" v-if="item.picList===null">
+            <img class="pic" :src="item.itemPicUrl" alt="">
+          </div>
+          <div class="listImgs" v-if="item.picList!==null">
+            <img class="picl" :src="item.picList[0]" alt="">
+            <img class="picr" :src="item.picList[1]" alt="">
+            <img class="picr" :src="item.picList[2]" alt="">
+          </div>
+          <div class="decs ellipsis">{{item.title}}</div>
+        </div>
+       <!-- <div class="list" v-if="item.picList===null" v-for="(item, index) in findMore" :key="index">
           <div class="listImg">
-            <img class="pic" :src="item.scenePicUrl" alt="">
+            <img class="pic" :src="item.itemPicUrl" alt="">
           </div>
           <div class="decs">{{item.title}}</div>
-        </div>
+        </div>-->
 
-        <!--<div class="list">-->
-          <!--<div class="listImgs">-->
-            <!--<img class="picl" src="//yanxuan.nosdn.127.net/2ff7bd412d5537ee17fa46619ae48f4e.jpg" alt="">-->
-            <!--<img class="picr" src="//yanxuan.nosdn.127.net/2ff7bd412d5537ee17fa46619ae48f4e.jpg" alt="">-->
-            <!--<img class="picr" src="//yanxuan.nosdn.127.net/2ff7bd412d5537ee17fa46619ae48f4e.jpg" alt="">-->
-          <!--</div>-->
-          <!--<div class="decs ellipsis">40款恋爱小甜饼</div>-->
-        <!--</div>-->
+
       </div>
     </div>
   </div>
@@ -90,7 +94,7 @@
           >.picl
             display block
             width 4.6rem
-            left 3.6rem
+            height  3.6rem
             margin-right 0.04rem
             float left
           >.picr

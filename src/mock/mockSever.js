@@ -8,7 +8,7 @@ import dataNav from './data_nav.json'
 
 import homeData from './home_data.json'
 
-import shiwuData from './datatopic.json'
+import shiwuData from './shiwu_data'
 
 
 //返回banner 轮播图的接口

@@ -8,9 +8,9 @@
           <div class="swiper-slide" v-for="(banner, index) in explore.banner" :key="index">
             <img :src="banner.picUrl" alt="">
             <div class="content">
-              <div class="tag">严选</div>
-              <div class="mainTitle">精致女孩</div>
-              <div class="desc">单身公寓</div>
+              <div class="tag">{{banner.subTitle}}</div>
+              <div class="mainTitle">{{banner.title}}</div>
+              <div class="desc">{{banner.desc}}</div>
             </div>
           </div>
         </div>
@@ -27,10 +27,13 @@
       <Split></Split>
 
       <Recommend :recommend="explore.recommend"></Recommend>
-      <TenFifteen></TenFifteen>
+      <TenFifteen :tenfifteen="explore.tenfifteen"></TenFifteen>
       <Best :zhen="explore.zhen"></Best>
       <Look></Look>
       <MoreShows :findMore="explore.findMore"></MoreShows>
+    </div>
+    <div class="backTop">
+      <i class="iconfont icon-unie624 icon" @click="backTop"></i>
     </div>
   </div>
 </div>
@@ -55,9 +58,9 @@
         this.$nextTick(() => {
           new Swiper('.swiper-container', {
             slidesPerView : 1.15,
-            spaceBetween: 20,
+            spaceBetween: 15,
             loop: true,
-            //autoplay: true,
+            autoplay: true,
             centeredSlides : true,
           });
         })
@@ -68,11 +71,17 @@
         })
       })
 
-      new BScroll('.explore-wrapper', {
+      this.exploreScroll = new BScroll('.explore-wrapper', {
         click: true
       })
 
 
+    },
+    methods: {
+      backTop () {
+        this.exploreScroll.scrollTo(0, 0, 300)
+
+      }
     },
     components: {
       Header,
@@ -189,5 +198,20 @@
             font-size 0.18rem
             margin-top 0.22rem
 
+  .backTop
+    bottom 1.12rem
+    right 0.1rem
+    position fixed
+    z-index 1
+    >i
+      background-color rgba(255,255,255,0.7)
+      border-radius 50%
+      color #666
+      font-size 0.88rem
+      line-height 1rem
+      text-align center
+      width 1rem
+      height 1rem
+      display block
 
 </style>

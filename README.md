@@ -59,3 +59,12 @@ day03
                  autoplay: true,
                  centeredSlides : true, //居中显示
                });
+
+
+day04
+  1. 同样的结构, 显示不同的效果, 用v-if判断
+  2. 遍历的 :key 值写遍历到的数据的id值会报错
+  3. 定时器不显示问题, 将时分秒单独放在data中
+
+
+

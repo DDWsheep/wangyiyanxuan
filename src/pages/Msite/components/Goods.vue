@@ -24,36 +24,13 @@
           <i class="iconfont icon-rightarrow icon"></i>
         </header>
         <div class="brand">
-          <div class="brand-item">
-            <h4>CK制造商</h4>
+          <div class="brand-item" v-if="index<4" v-for="(item, index) in home.tagList" :key="item.id">
+            <h4>{{item.name}}</h4>
             <div class="price">
-              <span>25</span><span class="right">元起</span>
+              <span>{{item.floorPrice}}</span><span class="right">元起</span>
             </div>
             <i class="icon"></i>
-            <img src="http://yanxuan.nosdn.127.net/e57c3fb16c4633c292d8c0e7cb053a6f.png?imageView&thumbnail=355x0&quality=65">
-          </div>
-          <div class="brand-item">
-            <h4>Nine West制造商</h4>
-            <div class="price">
-              <span>209</span><span class="right">元起</span>
-            </div>
-            <i class="icon"></i>
-            <img src="http://yanxuan.nosdn.127.net/cc056d931b009298769d65b94175d696.png?imageView&thumbnail=355x0&quality=65">
-          </div>
-          <div class="brand-item">
-            <h4>海外制造商</h4>
-            <div class="price">
-              <span>9.9</span><span class="right">元起</span>
-            </div>
-            <i class="icon"></i>
-            <img src="http://yanxuan.nosdn.127.net/5e2f6d68ca4cf25b18d6573eafa2a4d4.png?imageView&thumbnail=355x0&quality=65">
-          </div>
-          <div class="brand-item">
-            <h4>Ralph Lauren制造商</h4>
-            <div class="price">
-              <span>19</span><span class="right">元起</span>
-            </div>
-            <img src="http://yanxuan.nosdn.127.net/7f55f337f98a198ac3d629847171d5d2.png?imageView&thumbnail=355x0&quality=65">
+            <img :src="item.picUrl">
           </div>
 
         </div>
@@ -147,8 +124,12 @@
         </div>
       </div>
 
+
     </div>
 
+    <div class="backTop">
+      <i class="iconfont icon-unie624 icon" @click="backTop"></i>
+    </div>
 
   </div>
 </template>
@@ -201,6 +182,12 @@
 
       })
     },
+    methods: {
+      backTop () {
+        this.goodScroll.scrollTo(0, 0, 300)
+
+      }
+    },
 
     components: {
       Timing,
@@ -230,10 +217,11 @@
       display flex
       flex-flow row nowrap
       align-items center
+      justify-content space-around
       .desc
         font-size 0.24rem
         height 100%
-        padding 0 0.25rem
+        //padding 0 0.25rem
         line-height 0.72rem
         text-align center
         img
@@ -462,4 +450,20 @@
           line-height 0.32rem
           span
             font-size 0.24rem
+  .backTop
+    bottom 1.12rem
+    right 0.1rem
+    position fixed
+    z-index 1
+    >i
+      background-color rgba(255,255,255,0.7)
+      border-radius 50%
+      color #666
+      font-size 0.88rem
+      line-height 1rem
+      text-align center
+      width 1rem
+      height 1rem
+      display block
+
 </style>

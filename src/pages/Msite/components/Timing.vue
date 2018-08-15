@@ -5,13 +5,14 @@
         <div class="timing-left">
           <div class="title">严选限时购</div>
           <div class="countdown">
-            <input class="hours time"/>{{timerArr[0]}}
+            <!--<input type="text" class="hours time" v-model="timerArr[0]">-->
+            <span class="hours time">{{hour}}</span>
             <span class="colon">:</span>
-            <span class="mins time">{{timerArr[1]}}</span>
+            <span class="mins time">{{min}}</span>
             <span class="colon">:</span>
-            <span class="secs time">{{timerArr[2]}}</span>
+            <span class="secs time">{{sec}}</span>
           </div>
-          <div class="next-title">下一场14:00开始</div>
+          <div class="next-title">下一场{{nextTime}}:00开始</div>
         </div>
         <div class="timing-right">
           <img src="http://yanxuan.nosdn.127.net/25c7279ef37c6836bb6010d03f8a5caf.png?imageView&quality=85&thumbnail=330x330" alt="">
@@ -31,22 +32,33 @@
   export default {
     data () {
       return {
-        timerArr: []
+        nextTime: 20,
+        hour: null,
+        min: null,
+        sec: null,
+        countTime: '2018-08-16 20:00:00'
       }
     },
     mounted () {
       this.$nextTick(() => {
         this._getTime()
+        console.log(this.hour, this.min, this.sec);
       })
     },
     methods: {
       _getTime () {
+
+
         //获取当前时间
-        let arr = []
         let data = new Date();
         let now = data.getTime();
+       /* let hour = data.getHours()//获取时
+        let minutes = data.getMinutes()
+        let second = data.getSeconds()
+*/
         //设置截止时间
-        let endDate = new Date("2018-08-14 08:00:00");
+        let time  = this.countTime
+        let endDate = new Date(time);
         let end = endDate.getTime();
         //时间差
         let leftTime = end-now;
@@ -57,11 +69,28 @@
           h = Math.floor(leftTime/1000/60/60%24);
           m = Math.floor(leftTime/1000/60%60);
           s = Math.floor(leftTime/1000%60);
-          arr.push(h, m, s)
-        } else{
-          end += 8*3600
+          if (h < 10) {
+            h = '0' + h
+          }
+          if (m < 10) {
+            m = '0' + m
+          }
+          if (s < 10) {
+            s = '0' + s
+          }
+
+        } else {
+          this.nextTime += 24
+          if (this.nextTime >= 24) {
+            this.nextTime = this.nextTime - 24 * parseInt(this.nextTime/24)
+          }
         }
-        this.timerArr = arr
+
+
+        this.hour = h
+        this.min = m
+        this.sec = s
+
         setInterval(this._getTime ,500);
 
       }

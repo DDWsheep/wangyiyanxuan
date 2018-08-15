@@ -103,17 +103,22 @@
     .cateNavWrap
       clearFix()
       float left
+      display flex
       position relative
       width 1.62rem
+      height 10.6rem
+      padding 0.4rem 0 1.38rem
       .nav
         width 100%
-        padding 0.4rem 0 1.38rem
+        display flex
+        flex-flow column nowrap
         .item
           width 100%
           height 0.5rem
           text-align center
           line-height 0.5rem
-          margin-top 0.4rem
+          margin-top 0.38rem
+          font-size 0.32rem
           &:nth-child(1)
             margin-top 0
           &.active
